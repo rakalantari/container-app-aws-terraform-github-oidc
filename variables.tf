@@ -14,7 +14,7 @@ variable "additional_tags" {
   type        = map(string)
   description = "variable if additional tags are needed"
   default = {
-    Created-by  = "terraform"
-    Project = "wep-application"
+    Created-by = "terraform"
+    Project    = "wep-application"
   }
 }
