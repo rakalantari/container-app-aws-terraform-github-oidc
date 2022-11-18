@@ -6,14 +6,14 @@ variable "vpc_cidr_block" {
 
 variable "enable_dns_hostnames" {
   type        = bool
-  default     = true
   description = "boolean value indicating dns hostnames to be enabled"
+  default     = true
 }
 
 variable "enable_dns_support" {
   type        = bool
-  default     = true
   description = "boolean value indicating dns support to be enabled"
+  default     = true
 }
 
 variable "availability_zones" {
