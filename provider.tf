@@ -5,13 +5,13 @@ terraform {
     region         = "us-west-2"
     dynamodb_table = "terraform-state-locking"
     encrypt        = true
-    profile        = "terraform"
+    #profile        = "terraform"
   }
 }
 
 provider "aws" {
   region                   = var.aws_region
-  shared_config_files      = ["~/.aws/config"]
-  shared_credentials_files = ["~/.aws/credentials"]
-  profile                  = "terraform"
+  #shared_config_files      = ["~/.aws/config"]
+  #shared_credentials_files = ["~/.aws/credentials"]
+  #profile                  = "terraform"
 }
