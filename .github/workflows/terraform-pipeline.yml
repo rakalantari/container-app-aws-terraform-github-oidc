@@ -107,7 +107,7 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -var-file="./Stage/variables.tfvars" -auto-approve -input=false
-
+        
       - name: Terraform Destroy
         id: destroy
         if: github.head_ref == 'refs/heads/destroy' && github.event_name == 'push'
