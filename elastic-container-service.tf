@@ -1,5 +1,5 @@
 module "elastic-container-service" {
-  source = "./Modules/elastic-container-service"
+  source = "./modules/elastic-container-service"
 
   aws_region                        = var.aws_region
   environment_name                  = var.environment_name
