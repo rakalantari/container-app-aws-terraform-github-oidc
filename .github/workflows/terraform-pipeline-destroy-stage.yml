@@ -57,12 +57,12 @@ jobs:
 
       - name: Terraform Destroy
         id: destroy
-        if: github.ref == 'refs/heads/stage' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/stage'
         run: terraform destroy -var-file="./Stage/variables.tfvars" -auto-approve -input=false
 
       - name: Update Pull Request
         uses: actions/github-script@v6
-        if: github.event_name == 'push'
+        if: github.ref == 'refs/heads/stage'
         env:
           DESTROY-OUTPUT: "terraform\n${{ steps.destroy.outputs.stdout }}"
         with:
