@@ -106,5 +106,5 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/${{ matrix.environment }}' && github.event_name == 'push'
+        if: github.event_name == 'push'
         run: terraform apply -var-file="./${{ matrix.environment }}/variables.tfvars" -auto-approve -input=false

@@ -57,12 +57,12 @@ jobs:
 
       - name: Terraform Destroy
         id: destroy
-        if: github.ref == 'refs/heads/${{ matrix.environment }}'
+        if: github.ref == 'refs/heads/production'
         run: terraform destroy -var-file="./${{ matrix.environment }}/variables.tfvars" -auto-approve -input=false
 
       - name: Update Pull Request
         uses: actions/github-script@v6
-        if: github.ref == 'refs/heads/${{ matrix.environment }}'
+        if: github.ref == 'refs/heads/production'
         env:
           OUTPUT: "terraform\n${{ steps.destroy.outputs.stdout }}"
         with:
