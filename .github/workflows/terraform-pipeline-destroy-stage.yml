@@ -64,7 +64,7 @@ jobs:
         uses: actions/github-script@v6
         if: github.ref == 'refs/heads/stage'
         env:
-          DESTROY-OUTPUT: "terraform\n${{ steps.destroy.outputs.stdout }}"
+          OUTPUT: "terraform\n${{ steps.destroy.outputs.stdout }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -84,7 +84,7 @@ jobs:
             <details><summary>Destroy Output</summary>
 
             \`\`\`\n
-            ${process.env.DESTROY-OUTPUT}
+            ${process.env.OUTPUT}
             \`\`\`
 
             </details>

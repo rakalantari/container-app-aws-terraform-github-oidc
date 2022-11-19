@@ -2,9 +2,9 @@ name: "Terraform Deployment Action - Production"
 
 on:
   pull_request:
-    branches: Production
+    branches: production
   push:
-    branches: Production
+    branches: production
 
 permissions:
       id-token: write 
@@ -20,7 +20,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        environment: [Production]
+        environment: [production]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
 

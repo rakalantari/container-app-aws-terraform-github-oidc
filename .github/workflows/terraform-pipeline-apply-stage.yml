@@ -20,7 +20,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        environment: [Stage]
+        environment: [stage]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
 
