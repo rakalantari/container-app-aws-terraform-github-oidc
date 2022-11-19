@@ -2,7 +2,7 @@ name: "Terraform Destroy Action - Production"
 
 on:
   workflow_dispatch:
-    branches: Production
+    branches: production
 
 permissions:
       id-token: write 
@@ -18,7 +18,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        environment: [Production]
+        environment: [production]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
 
@@ -64,7 +64,7 @@ jobs:
         uses: actions/github-script@v6
         if: github.ref == 'refs/heads/${{ matrix.environment }}'
         env:
-          DESTROY-OUTPUT: "terraform\n${{ steps.destroy.outputs.stdout }}"
+          OUTPUT: "terraform\n${{ steps.destroy.outputs.stdout }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -84,7 +84,7 @@ jobs:
             <details><summary>Destroy Output</summary>
 
             \`\`\`\n
-            ${process.env.DESTROY-OUTPUT}
+            ${process.env.OUTPUT}
             \`\`\`
 
             </details>
