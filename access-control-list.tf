@@ -1,5 +1,5 @@
 module "access-control-list" {
-  source = "./Modules/access-control-list"
+  source = "./modules/access-control-list"
 
   environment_name   = var.environment_name
   vpc                = module.networking.vpc

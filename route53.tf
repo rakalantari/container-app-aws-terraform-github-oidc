@@ -1,5 +1,5 @@
 module "route53" {
-  source = "./Modules/route53"
+  source = "./modules/route53"
 
   environment_name = var.environment_name
   hosted_zone_name = var.hosted_zone_name

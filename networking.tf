@@ -1,5 +1,5 @@
 module "networking" {
-  source = "./Modules/networking"
+  source = "./modules/networking"
 
   environment_name            = var.environment_name
   vpc_cidr_block              = var.vpc_cidr_block

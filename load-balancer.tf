@@ -1,5 +1,5 @@
 module "load-balancer" {
-  source = "./Modules/load-balancer"
+  source = "./modules/load-balancer"
 
   environment_name                                = var.environment_name
   http_target_group_name                          = var.http_target_group_name

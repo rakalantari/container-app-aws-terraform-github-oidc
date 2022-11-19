@@ -1,5 +1,5 @@
 module "autoscaling" {
-  source = "./Modules/autoscaling-group"
+  source = "./modules/autoscaling-group"
 
   environment_name                                 = var.environment_name
   ecs_cluster                                      = module.elastic-container-service.ecs_cluster
