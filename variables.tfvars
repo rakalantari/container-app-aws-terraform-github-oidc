@@ -4,5 +4,5 @@ default_route_ip4 = "0.0.0.0/0"
 
 additional_tags = {
   Terraform = "true"
-  Project    = "container-application"
+  Project   = "container-application"
 }

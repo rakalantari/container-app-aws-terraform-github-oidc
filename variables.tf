@@ -1,7 +1,6 @@
 variable "aws_region" {
   type        = string
   description = "aws region to be used for building stage infrastructure"
-  default     = "us-west-2"
 }
 
 variable "environment_name" {
