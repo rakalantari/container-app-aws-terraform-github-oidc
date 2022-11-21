@@ -1,5 +1,5 @@
 # general variables
-environment_name = "production"
+environment_name = "prod"
 
 # iam role variables
 ecs_task_execution_role_name = "WebAppECSTaskExecutionRole"
