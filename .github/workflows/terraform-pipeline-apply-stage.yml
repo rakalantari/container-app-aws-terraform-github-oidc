@@ -20,7 +20,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        environment: [Stage]
+        environment: [stage]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
 
@@ -60,7 +60,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan -var-file="./Stage/variables.tfvars" -no-color -input=false
+        run: terraform plan -var-file="./${{ matrix.environment }}/variables.tfvars" -no-color -input=false
         continue-on-error: true
 
       - name: Update Pull Request
@@ -106,5 +106,5 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/stage' && github.event_name == 'push'
-        run: terraform apply -var-file="./Stage/variables.tfvars" -auto-approve -input=false
+        if: github.event_name == 'push'
+        run: terraform apply -var-file="./${{ matrix.environment }}/variables.tfvars" -auto-approve -input=false

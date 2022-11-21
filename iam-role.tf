@@ -1,5 +1,5 @@
 module "iam-role" {
-  source = "./Modules/iam-role"
+  source = "./modules/iam-role"
 
   environment_name              = var.environment_name
   ecs_task_execution_role_name  = var.ecs_task_execution_role_name

@@ -1,8 +1,8 @@
-name: "Terraform Destroy Action - Stage"
+name: "Terraform Destroy Action - Production"
 
 on:
   workflow_dispatch:
-    branches: stage
+    branches: production
 
 permissions:
       id-token: write 
@@ -11,14 +11,14 @@ permissions:
 
 env:
   TF_LOG: INFO
-  AWS_REGION: ${{ secrets.AWS_REGION_STAGE }}
+  AWS_REGION: ${{ secrets.AWS_REGION_PRODUCTION }}
 
 jobs:
   deploy:
     strategy:
       max-parallel: 1
       matrix:
-        environment: [stage]
+        environment: [production]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
 
@@ -29,9 +29,9 @@ jobs:
       - name: Configure AWS Credentials From AWS Account
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_STAGE }}
-          aws-region: ${{ secrets.AWS_REGION_STAGE }}
-          role-session-name: GitHub-OIDC-TERRAFORM-STAGE
+          role-to-assume: ${{ secrets.AWS_ROLE_PRODUCTION }}
+          aws-region: ${{ secrets.AWS_REGION_PRODUCTION }}
+          role-session-name: GitHub-OIDC-TERRAFORM-PRODUCTION
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -47,8 +47,8 @@ jobs:
       - name: Terraform Init
         id: init
         env:
-          AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME_STAGE }}
-          AWS_BUCKET_KEY_NAME: ${{ secrets.AWS_BUCKET_KEY_NAME_STAGE }}
+          AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME_PRODUCTION }}
+          AWS_BUCKET_KEY_NAME: ${{ secrets.AWS_BUCKET_KEY_NAME_PRODUCTION }}
         run: terraform init -backend-config="bucket=${AWS_BUCKET_NAME}" -backend-config="key=${AWS_BUCKET_KEY_NAME}" -backend-config="region=${AWS_REGION}"
 
       - name: Terraform Validate
@@ -57,12 +57,12 @@ jobs:
 
       - name: Terraform Destroy
         id: destroy
-        if: github.ref == 'refs/heads/stage'
+        if: github.ref == 'refs/heads/production'
         run: terraform destroy -var-file="./${{ matrix.environment }}/variables.tfvars" -auto-approve -input=false
 
       - name: Update Pull Request
         uses: actions/github-script@v6
-        if: github.ref == 'refs/heads/stage'
+        if: github.ref == 'refs/heads/production'
         env:
           OUTPUT: "terraform\n${{ steps.destroy.outputs.stdout }}"
         with:

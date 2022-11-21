@@ -1,5 +1,5 @@
 module "security-group" {
-  source = "./Modules/security-group"
+  source = "./modules/security-group"
 
   environment_name                         = var.environment_name
   vpc_id                                   = module.networking.vpc_id

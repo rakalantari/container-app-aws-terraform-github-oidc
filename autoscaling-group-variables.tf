@@ -44,7 +44,7 @@ variable "autoscaling_policy_predefined_metric_type_memory" {
 variable "autoscaling_policy_target_value_memory" {
   type        = string
   description = "target value for memory autoscaling policy"
-  default     = 80
+  default     = 50
 }
 
 variable "autoscaling_policy_type_cpu" {
