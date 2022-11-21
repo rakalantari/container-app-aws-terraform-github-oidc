@@ -1,5 +1,5 @@
 # general variables
-environment_name = "production"
+environment_name = "prod"
 
 # iam role variables
 ecs_task_execution_role_name = "WebAppECSTaskExecutionRole"
@@ -58,7 +58,7 @@ autoscaling_policy_predefined_metric_type_memory = "ECSServiceAverageMemoryUtili
 autoscaling_policy_target_value_memory = 50
 autoscaling_policy_type_cpu = "TargetTrackingScaling"
 autoscaling_policy_predefined_metric_type_cpu = "ECSServiceAverageCPUUtilization"
-autoscaling_policy_target_value_cpu = 60
+autoscaling_policy_target_value_cpu = 50
 
 # security group variables
 load_balancer_security_group_name = "load_balancer_security_group"
