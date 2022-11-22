@@ -10,9 +10,9 @@ ecs_iam_instance_profile_name = "ecs-iam-instance-profile"
 vpc_cidr_block = "10.124.0.0/16"
 enable_dns_hostnames = true
 enable_dns_support = true
-availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"]
-public_subnets_cidr_blocks = ["10.124.0.0/24", "10.124.1.0/24", "10.124.2.0/24", "10.124.3.0/24"]
-private_subnets_cidr_blocks = ["10.124.10.0/24", "10.124.11.0/24", "10.124.12.0/24", "10.124.13.0/24"]
+availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"] #, "us-west-2d"]
+public_subnets_cidr_blocks = ["10.124.0.0/24", "10.124.1.0/24", "10.124.2.0/24"] #, "10.124.3.0/24"]
+private_subnets_cidr_blocks = ["10.124.10.0/24", "10.124.11.0/24", "10.124.12.0/24"] #, "10.124.13.0/24"]
 
 # load balancer variables
 http_target_group_name = "http-target-group"
