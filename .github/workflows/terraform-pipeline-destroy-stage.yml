@@ -64,7 +64,7 @@ jobs:
         uses: actions/github-script@v6
         if: github.ref == 'refs/heads/stage'
         env:
-          OUTPUT: "terraform\n${{ steps.destroy.outputs.stdout }}"
+          OUTPUT: "terraform\n${{ steps.destroy.outputs.result }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
