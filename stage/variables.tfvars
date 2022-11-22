@@ -11,9 +11,9 @@ ecs_iam_instance_profile_name = "ecs-iam-instance-profile"
 vpc_cidr_block = "10.123.0.0/16"
 enable_dns_hostnames = true
 enable_dns_support = true
-availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"]
-public_subnets_cidr_blocks = ["10.123.0.0/24", "10.123.1.0/24", "10.123.2.0/24", "10.123.3.0/24"]
-private_subnets_cidr_blocks = ["10.123.10.0/24", "10.123.11.0/24", "10.123.12.0/24", "10.123.13.0/24"]
+availability_zones = ["us-west-2a", "us-west-2b"] #, "us-west-2c", "us-west-2d"]
+public_subnets_cidr_blocks = ["10.123.0.0/24", "10.123.1.0/24"] #, "10.123.2.0/24", "10.123.3.0/24"]
+private_subnets_cidr_blocks = ["10.123.10.0/24", "10.123.11.0/24"] #, "10.123.12.0/24", "10.123.13.0/24"]
 
 # load balancer variables
 http_target_group_name = "http-target-group"
@@ -49,7 +49,7 @@ ecs_service_launch_type = "FARGATE"
 container_name = "ecs-container"
 
 # autoscaling group variables
-autoscaling_target_min_capacity = 3
+autoscaling_target_min_capacity = 2
 autoscaling_target_max_capacity = 5
 autoscaling_target_scalable_dimension = "ecs:service:DesiredCount"
 autoscaling_target_service_namespace = "ecs"

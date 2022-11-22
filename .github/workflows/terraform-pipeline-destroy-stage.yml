@@ -62,32 +62,14 @@ jobs:
 
       - name: Update Pull Request
         uses: actions/github-script@v6
-        if: github.ref == 'refs/heads/stage'
-        env:
-          OUTPUT: "terraform\n${{ steps.destroy.outputs.stdout }}"
+        if: github.ref == 'refs/heads/stage'        
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
             #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
-            #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
-            <details><summary>Validation Output</summary>
-
-            \`\`\`\n
-            ${{ steps.validate.outputs.stdout }}
-            \`\`\`
-
-            </details>
-
-            #### Terraform Destroy 📖\`${{ steps.destroy.outcome }}\`
-
-            <details><summary>Destroy Output</summary>
-
-            \`\`\`\n
-            ${process.env.OUTPUT}
-            \`\`\`
-
-            </details>
+            #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`            
+            #### Terraform Destroy 📖\`${{ steps.destroy.outcome }}\`            
 
             *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
 
